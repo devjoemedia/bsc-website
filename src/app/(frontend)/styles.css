@@ -4,6 +4,21 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+  font-family: 'Recoleta';
+  src: url('/font/Recoleta-Bold.woff2') format('woff2'),
+    url('/font/Recoleta-Bold.woff') format('woff'),
+    url('/font/Recoleta-Medium.woff') format('woff2'),
+    url('/font/Recoleta-Light.woff') format('woff2'),
+    url('/font/Recoleta-Light.woff') format('woff'),
+    url('/font/Recoleta-Regular.woff') format('woff2'),
+    url('/font/Recoleta-Regular.woff') format('woff'),
+    url('/font/Recoleta-Medium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --font-mono: 'Roboto Mono', monospace;
   --background: oklch(1 0 0);
@@ -52,11 +67,6 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
-html,
-body,
-#app {
-  height: 100%;
-}
 
 body {
   font-family: system-ui;
@@ -65,139 +75,11 @@ body {
 
   margin: 0;
   color: rgb(1000, 1000, 1000);
+  /* font-family: @apply font-recoleta; */
 
   @media (max-width: 1024px) {
     font-size: 15px;
     line-height: 24px;
-  }
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-h1 {
-  margin: 40px 0;
-  font-size: 64px;
-  line-height: 70px;
-  font-weight: bold;
-
-  @media (max-width: 1024px) {
-    margin: 24px 0;
-    font-size: 42px;
-    line-height: 42px;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 38px;
-    line-height: 38px;
-  }
-
-  @media (max-width: 400px) {
-    font-size: 32px;
-    line-height: 32px;
-  }
-}
-
-p {
-  margin: 24px 0;
-
-  @media (max-width: 1024px) {
-    margin: calc(var(--base) * 0.75) 0;
-  }
-}
-
-a {
-  color: currentColor;
-
-  &:focus {
-    opacity: 0.8;
-    outline: none;
-  }
-
-  &:active {
-    opacity: 0.7;
-    outline: none;
-  }
-}
-
-svg {
-  vertical-align: middle;
-}
-
-.home {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 100vh;
-  padding: 45px;
-  max-width: 1024px;
-  margin: 0 auto;
-  overflow: hidden;
-
-  @media (max-width: 400px) {
-    padding: 24px;
-  }
-
-  .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-
-    h1 {
-      text-align: center;
-    }
-  }
-
-  .links {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    a {
-      text-decoration: none;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-    }
-
-    .admin {
-      color: rgb(0, 0, 0);
-      background: rgb(1000, 1000, 1000);
-      border: 1px solid rgb(0, 0, 0);
-    }
-
-    .docs {
-      color: rgb(1000, 1000, 1000);
-      background: rgb(0, 0, 0);
-      border: 1px solid rgb(1000, 1000, 1000);
-    }
-  }
-
-  .footer {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    @media (max-width: 1024px) {
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    p {
-      margin: 0;
-    }
-
-    .codeLink {
-      text-decoration: none;
-      padding: 0 0.5rem;
-      background: rgb(60, 60, 60);
-      border-radius: 4px;
-    }
   }
 }
 
@@ -275,6 +157,35 @@ svg {
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Colors */
+  --color-primary: #4f0a44;
+  --color-primary-light: #723b69;
+  --color-bsc-yellow: #f9f4e8;
+  --color-bsc-red: #b80018;
+  --color-secondary-text: #f9f4e8;
+
+  /* Fonts */
+  --font-recoleta: "Recoleta", serif;
+
+  /* Background Images */
+  --background-image-banner-bg: url("/images/hero-bg.png");
+  --background-image-hero-bg: url("/images/bg.png");
+  --background-image-dots-bg: url("/images/dots.png");
+  --background-image-donate-bg: url("/images/donate-bg.png");
+  --background-image-banner1-bg: url("/images/1.jpg");
+  --background-image-slug-bg: url("/images/slug-bg.jpeg");
+  --background-image-partnership: url("/images/partnership.png");
+  --background-image-volunteer: url("/images/volunteer.png");
+  --background-image-event: url("/images/event.png");
+  --background-image-event2: url("/images/home-1.jpg");
+  --background-image-program: url("/images/program.png");
+  --background-image-getinvolved: url("/images/aboutside.png");
+  --background-image-community: url("/images/community.jpeg");
+  
+  /* Gradients */
+  --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+  --background-image-gradient-conic: conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops));
 }
 
 @layer base {

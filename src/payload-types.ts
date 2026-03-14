@@ -69,6 +69,16 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    'home-hero': HomeHero;
+    'home-member-spotlight': HomeMemberSpotlight;
+    'home-mission': HomeMission;
+    'home-partnership': HomePartnership;
+    'home-pillars': HomePillar;
+    'home-stats': HomeStat;
+    'home-upcoming-programs-sections': HomeUpcomingProgramsSection;
+    programs: Program;
+    stats: Stat;
+    'community-member': CommunityMember;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -78,6 +88,16 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    'home-hero': HomeHeroSelect<false> | HomeHeroSelect<true>;
+    'home-member-spotlight': HomeMemberSpotlightSelect<false> | HomeMemberSpotlightSelect<true>;
+    'home-mission': HomeMissionSelect<false> | HomeMissionSelect<true>;
+    'home-partnership': HomePartnershipSelect<false> | HomePartnershipSelect<true>;
+    'home-pillars': HomePillarsSelect<false> | HomePillarsSelect<true>;
+    'home-stats': HomeStatsSelect<false> | HomeStatsSelect<true>;
+    'home-upcoming-programs-sections': HomeUpcomingProgramsSectionsSelect<false> | HomeUpcomingProgramsSectionsSelect<true>;
+    programs: ProgramsSelect<false> | ProgramsSelect<true>;
+    stats: StatsSelect<false> | StatsSelect<true>;
+    'community-member': CommunityMemberSelect<false> | CommunityMemberSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -163,6 +183,274 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-hero".
+ */
+export interface HomeHero {
+  id: string;
+  badge: string;
+  title: string;
+  subtitle: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  href: string;
+  hrefText: string;
+  photo: string | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-member-spotlight".
+ */
+export interface HomeMemberSpotlight {
+  id: string;
+  badge: string;
+  title: string;
+  titleTextToHilight?: string | null;
+  description?: string | null;
+  titleTwo: string;
+  descriptionTwo: string;
+  memberToSpotlight: string | CommunityMember;
+  members: (string | CommunityMember)[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "community-member".
+ */
+export interface CommunityMember {
+  id: string;
+  name?: string | null;
+  role?: string | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  photo: string | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-mission".
+ */
+export interface HomeMission {
+  id: string;
+  badge: string;
+  title: string;
+  titleTextToHilight?: string | null;
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  href?: string | null;
+  hrefText?: string | null;
+  stats?:
+    | {
+        value?: number | null;
+        surfix?: string | null;
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-partnership".
+ */
+export interface HomePartnership {
+  id: string;
+  badge: string;
+  title: string;
+  titleTextToHilight?: string | null;
+  description: string;
+  titleTwo: string;
+  descriptionTwo: string;
+  href: string;
+  hrefText: string;
+  hrefTwo: string;
+  hrefTwoText: string;
+  companies: (string | Media)[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-pillars".
+ */
+export interface HomePillar {
+  id: string;
+  badge: string;
+  title: string;
+  titleTextToHilight?: string | null;
+  description?: string | null;
+  pillars?:
+    | {
+        title: string;
+        subtitle: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-stats".
+ */
+export interface HomeStat {
+  id: string;
+  badge?: string | null;
+  title?: string | null;
+  subtitle?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  href?: string | null;
+  hrefText?: string | null;
+  stats: (string | Stat)[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "stats".
+ */
+export interface Stat {
+  id: string;
+  title: string;
+  subtitle: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-upcoming-programs-sections".
+ */
+export interface HomeUpcomingProgramsSection {
+  id: string;
+  badge: string;
+  title: string;
+  titleTextToHilight?: string | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "programs".
+ */
+export interface Program {
+  id: string;
+  badge: string;
+  cohort: string;
+  title: string;
+  href?: string | null;
+  hrefText?: string | null;
+  startDate: string;
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  tracks?:
+    | {
+        text?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  thumbnail: string | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -192,6 +480,46 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'home-hero';
+        value: string | HomeHero;
+      } | null)
+    | ({
+        relationTo: 'home-member-spotlight';
+        value: string | HomeMemberSpotlight;
+      } | null)
+    | ({
+        relationTo: 'home-mission';
+        value: string | HomeMission;
+      } | null)
+    | ({
+        relationTo: 'home-partnership';
+        value: string | HomePartnership;
+      } | null)
+    | ({
+        relationTo: 'home-pillars';
+        value: string | HomePillar;
+      } | null)
+    | ({
+        relationTo: 'home-stats';
+        value: string | HomeStat;
+      } | null)
+    | ({
+        relationTo: 'home-upcoming-programs-sections';
+        value: string | HomeUpcomingProgramsSection;
+      } | null)
+    | ({
+        relationTo: 'programs';
+        value: string | Program;
+      } | null)
+    | ({
+        relationTo: 'stats';
+        value: string | Stat;
+      } | null)
+    | ({
+        relationTo: 'community-member';
+        value: string | CommunityMember;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -274,6 +602,166 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-hero_select".
+ */
+export interface HomeHeroSelect<T extends boolean = true> {
+  badge?: T;
+  title?: T;
+  subtitle?: T;
+  href?: T;
+  hrefText?: T;
+  photo?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-member-spotlight_select".
+ */
+export interface HomeMemberSpotlightSelect<T extends boolean = true> {
+  badge?: T;
+  title?: T;
+  titleTextToHilight?: T;
+  description?: T;
+  titleTwo?: T;
+  descriptionTwo?: T;
+  memberToSpotlight?: T;
+  members?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-mission_select".
+ */
+export interface HomeMissionSelect<T extends boolean = true> {
+  badge?: T;
+  title?: T;
+  titleTextToHilight?: T;
+  description?: T;
+  href?: T;
+  hrefText?: T;
+  stats?:
+    | T
+    | {
+        value?: T;
+        surfix?: T;
+        label?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-partnership_select".
+ */
+export interface HomePartnershipSelect<T extends boolean = true> {
+  badge?: T;
+  title?: T;
+  titleTextToHilight?: T;
+  description?: T;
+  titleTwo?: T;
+  descriptionTwo?: T;
+  href?: T;
+  hrefText?: T;
+  hrefTwo?: T;
+  hrefTwoText?: T;
+  companies?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-pillars_select".
+ */
+export interface HomePillarsSelect<T extends boolean = true> {
+  badge?: T;
+  title?: T;
+  titleTextToHilight?: T;
+  description?: T;
+  pillars?:
+    | T
+    | {
+        title?: T;
+        subtitle?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-stats_select".
+ */
+export interface HomeStatsSelect<T extends boolean = true> {
+  badge?: T;
+  title?: T;
+  subtitle?: T;
+  href?: T;
+  hrefText?: T;
+  stats?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-upcoming-programs-sections_select".
+ */
+export interface HomeUpcomingProgramsSectionsSelect<T extends boolean = true> {
+  badge?: T;
+  title?: T;
+  titleTextToHilight?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "programs_select".
+ */
+export interface ProgramsSelect<T extends boolean = true> {
+  badge?: T;
+  cohort?: T;
+  title?: T;
+  href?: T;
+  hrefText?: T;
+  startDate?: T;
+  description?: T;
+  tracks?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  thumbnail?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "stats_select".
+ */
+export interface StatsSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "community-member_select".
+ */
+export interface CommunityMemberSelect<T extends boolean = true> {
+  name?: T;
+  role?: T;
+  description?: T;
+  photo?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
