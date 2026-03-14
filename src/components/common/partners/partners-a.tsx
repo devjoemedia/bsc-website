@@ -25,7 +25,7 @@ const PartnersA = () => {
           <h2 className=' font-bold text-2xl md:text-3xl text-primary '>
             {partners_section?.title}
           </h2>
-          <p className='!text-sm'>
+          <p className='text-sm!'>
             {partners_section?.subtitle}
           </p>
         </div>

@@ -1,22 +1,7 @@
 'use client'
 import React, { FC, useState } from 'react'
 import Image from "next/image";
-import Link from 'next/link';
 import { CommunityMember as ICommunityMember, Media } from '@/payload-types';
-
-
-interface CardProps {
-  index: number;
-  id: number
-  name: string
-  role: string
-  photo: string
-  bio?: string
-  fbUrl?: string
-  txUrl?: string
-  linkedinUrl?: string
-  igUrl?: string
-}
 
 const CommunityMember: FC<ICommunityMember> = ({ photo }) => {
   const [isOpen, setIsOpen] = useState(false)

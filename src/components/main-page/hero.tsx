@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-purple-900 via-purple-800 to-purple-700"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-linear-to-br from-purple-900 via-purple-800 to-purple-700"
     >
       {/* Decorative background elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -59,14 +59,14 @@ export default function Hero() {
         >
           Showing Her That{" "}
           <span className="relative">
-            <span className="relative z-10 bg-gradient-to-r from-gold-400 to-gold-500 bg-clip-text ">
+            <span className="relative z-10 bg-linear-to-r from-gold-400 to-gold-500 bg-clip-text ">
               She Can
             </span>
             <motion.span
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
               transition={{ duration: 0.8, delay: 1 }}
-              className="absolute bottom-2 left-0 h-3 bg-gold-500/20 rounded-full -z-0"
+              className="absolute bottom-2 left-0 h-3 bg-gold-500/20 rounded-full z-0"
             />
           </span>
         </motion.h1>
