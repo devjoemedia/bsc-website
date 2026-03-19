@@ -40,7 +40,7 @@ const Programs: React.FC<ProgramsProps> = ({ programs, data }) => {
             >
               <motion.div
                 whileHover={{ y: -6 }}
-                className="group relative h-full rounded-3xl bg-white border border-gray-100 shadow-xl shadow-gray-200/40 overflow-hidden"
+                className="group flex flex-col relative h-full rounded-3xl bg-white border border-gray-100 shadow-xl shadow-gray-200/40 overflow-hidden"
               >
                 {/* Top gradient bar */}
                 <div
@@ -69,7 +69,7 @@ const Programs: React.FC<ProgramsProps> = ({ programs, data }) => {
                   </div>
 
                   {/* Highlights */}
-                  <ul className="mt-6 space-y-3">
+                  <ul className="mt-6 space-y-3 mb-10">
                     {program.tracks?.map((item) => (
                       <li
                         key={item.id}
@@ -94,12 +94,13 @@ const Programs: React.FC<ProgramsProps> = ({ programs, data }) => {
                   </ul>
 
                   {/* CTA */}
-                  {program.href && (
-                    <Link href={program.href as string} className="mt-8">
+                  {/* {program.href && ( */}
+                    <Link href={`/programs/${program.id}`} className="mt-auto inline-block">
                       <span
                         className={`inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white bg-linear-to-r from-primary-light to-primary shadow-lg transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-0.5`}
                       >
-                        {program.hrefText}
+                        Register here
+                        {/* {program.hrefText} */}
                         <svg
                           className="h-4 w-4"
                           fill="none"
@@ -115,7 +116,7 @@ const Programs: React.FC<ProgramsProps> = ({ programs, data }) => {
                         </svg>
                       </span>
                     </Link>
-                  )}
+                  {/* )} */}
                 </div>
               </motion.div>
             </ScrollReveal>

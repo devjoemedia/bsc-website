@@ -60,7 +60,7 @@ const HomeHero: React.FC<HomeHeroProps> = ({items}) => {
   const slide = items[currentSlide];
 
   return (
-    <section className="relative w-full min-h-[80vh] md:min-h-[90vh] overflow-hidden">
+    <section className="relative w-full min-h-[90vh] md:min-h-[90vh] overflow-hidden">
       {/* Background slides */}
       {items.map((s, i) => (
         <div
@@ -81,13 +81,13 @@ const HomeHero: React.FC<HomeHeroProps> = ({items}) => {
       <div className="absolute inset-0 bg-linear-to-r from-black/90 via-black/60 to-black/80" />
 
       {/* Content */}
-      <div className="relative font-recoleta z-10 flex flex-col items-center justify-center min-h-[80vh] md:min-h-[90vh] px-4 text-center">
+      <div className="relative font-recoleta z-10 flex flex-col items-center justify-center min-h-[90vh] md:min-h-[90vh] px-4 text-center">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-8"
+          className="mb-5"
         >
           <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2 text-sm font-medium text-white backdrop-blur-sm">
             <span className="inline-block h-2 w-2 rounded-full bg-gold-400 animate-pulse" />
@@ -110,7 +110,7 @@ const HomeHero: React.FC<HomeHeroProps> = ({items}) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="mx-auto mt-0 md:mt-6 max-w-2xl text-lg sm:text-xl text-purple-100/90 leading-relaxed"
+          className="mx-auto mt-0 md:mt-5 max-w-2xl text-lg sm:text-xl text-purple-100/90 leading-relaxed"
         >
           <RichTextRenderer content={slide.subtitle} />
         </motion.p>
@@ -120,7 +120,7 @@ const HomeHero: React.FC<HomeHeroProps> = ({items}) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.6 }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="mt-5 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <Link
             href={slide.href}

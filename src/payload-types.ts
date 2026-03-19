@@ -79,6 +79,20 @@ export interface Config {
     programs: Program;
     stats: Stat;
     'community-member': CommunityMember;
+    'about-statistics': AboutStatistic;
+    'about-our-story': AboutOurStory;
+    'about-founders': AboutFounder;
+    'programs-hero': ProgramsHero;
+    'programs-section': ProgramsSection;
+    'get-involved-hero': GetInvolvedHero;
+    'get-involved-opportunities': GetInvolvedOpportunity;
+    'partnership-hero': PartnershipHero;
+    'partnership-options': PartnershipOption;
+    'volunteer-page': VolunteerPage;
+    'donate-page': DonatePage;
+    'program-details-data': ProgramDetailsDatum;
+    'about-hero': AboutHero;
+    'about-vision-and-mission': AboutVisionAndMission;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -98,6 +112,20 @@ export interface Config {
     programs: ProgramsSelect<false> | ProgramsSelect<true>;
     stats: StatsSelect<false> | StatsSelect<true>;
     'community-member': CommunityMemberSelect<false> | CommunityMemberSelect<true>;
+    'about-statistics': AboutStatisticsSelect<false> | AboutStatisticsSelect<true>;
+    'about-our-story': AboutOurStorySelect<false> | AboutOurStorySelect<true>;
+    'about-founders': AboutFoundersSelect<false> | AboutFoundersSelect<true>;
+    'programs-hero': ProgramsHeroSelect<false> | ProgramsHeroSelect<true>;
+    'programs-section': ProgramsSectionSelect<false> | ProgramsSectionSelect<true>;
+    'get-involved-hero': GetInvolvedHeroSelect<false> | GetInvolvedHeroSelect<true>;
+    'get-involved-opportunities': GetInvolvedOpportunitiesSelect<false> | GetInvolvedOpportunitiesSelect<true>;
+    'partnership-hero': PartnershipHeroSelect<false> | PartnershipHeroSelect<true>;
+    'partnership-options': PartnershipOptionsSelect<false> | PartnershipOptionsSelect<true>;
+    'volunteer-page': VolunteerPageSelect<false> | VolunteerPageSelect<true>;
+    'donate-page': DonatePageSelect<false> | DonatePageSelect<true>;
+    'program-details-data': ProgramDetailsDataSelect<false> | ProgramDetailsDataSelect<true>;
+    'about-hero': AboutHeroSelect<false> | AboutHeroSelect<true>;
+    'about-vision-and-mission': AboutVisionAndMissionSelect<false> | AboutVisionAndMissionSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -424,7 +452,8 @@ export interface Program {
   href?: string | null;
   hrefText?: string | null;
   startDate: string;
-  description: {
+  description: string;
+  fullDescription: {
     root: {
       type: string;
       children: {
@@ -446,6 +475,336 @@ export interface Program {
       }[]
     | null;
   thumbnail: string | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-statistics".
+ */
+export interface AboutStatistic {
+  id: string;
+  title: string;
+  subtitle: string;
+  metrics?:
+    | {
+        value: number;
+        label: string;
+        suffix?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-our-story".
+ */
+export interface AboutOurStory {
+  id: string;
+  title: string;
+  timelineItems?:
+    | {
+        year: string;
+        title: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-founders".
+ */
+export interface AboutFounder {
+  id: string;
+  title: string;
+  subtitle: string;
+  founders?:
+    | {
+        name: string;
+        role: string;
+        workTitle: string;
+        bio: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        linkedin?: string | null;
+        photo: string | Media;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "programs-hero".
+ */
+export interface ProgramsHero {
+  id: string;
+  badge: string;
+  title: string;
+  subtitle: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "programs-section".
+ */
+export interface ProgramsSection {
+  id: string;
+  badge: string;
+  title: string;
+  subtitle: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "get-involved-hero".
+ */
+export interface GetInvolvedHero {
+  id: string;
+  badge: string;
+  title: string;
+  subtitle: string;
+  href?: string | null;
+  hrefText?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "get-involved-opportunities".
+ */
+export interface GetInvolvedOpportunity {
+  id: string;
+  title: string;
+  subtitle: string;
+  opportunities?:
+    | {
+        title: string;
+        subtitle: string;
+        description: string;
+        iconName: string;
+        link: string;
+        linkText: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partnership-hero".
+ */
+export interface PartnershipHero {
+  id: string;
+  badge: string;
+  title: string;
+  subtitle: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partnership-options".
+ */
+export interface PartnershipOption {
+  id: string;
+  title: string;
+  subtitle: string;
+  options?:
+    | {
+        title: string;
+        description: string;
+        benefits?:
+          | {
+              benefit: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  brochureTitle: string;
+  brochureDescription: string;
+  brochureFile: string | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "volunteer-page".
+ */
+export interface VolunteerPage {
+  id: string;
+  heroBadge: string;
+  heroTitle: string;
+  heroDescription: string;
+  missionTitle: string;
+  missionContent: string;
+  empowermentTitle: string;
+  empowermentContent: string;
+  opportunitiesTitle: string;
+  opportunitiesContent: string;
+  roles?:
+    | {
+        title: string;
+        description: string;
+        link: string;
+        linkText: string;
+        requirements?:
+          | {
+              requirement: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "donate-page".
+ */
+export interface DonatePage {
+  id: string;
+  badge: string;
+  heroTitle: string;
+  heroDescription: string;
+  impacts?:
+    | {
+        impact: string;
+        id?: string | null;
+      }[]
+    | null;
+  allocationTitle: string;
+  allocationItems?:
+    | {
+        name: string;
+        icon: string;
+        id?: string | null;
+      }[]
+    | null;
+  methods?:
+    | {
+        title: string;
+        description: string;
+        details?:
+          | {
+              label: string;
+              value: string;
+              id?: string | null;
+            }[]
+          | null;
+        actionLink?: string | null;
+        actionText?: string | null;
+        iconType: string;
+        id?: string | null;
+      }[]
+    | null;
+  faqs?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "program-details-data".
+ */
+export interface ProgramDetailsDatum {
+  id: string;
+  title: string;
+  subtitle: string;
+  overview: string;
+  problemStatement: string;
+  impacts?:
+    | {
+        impact: string;
+        id?: string | null;
+      }[]
+    | null;
+  ctaText: string;
+  testimonials?:
+    | {
+        quote: string;
+        author: string;
+        id?: string | null;
+      }[]
+    | null;
+  address: string;
+  email: string;
+  phone: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-hero".
+ */
+export interface AboutHero {
+  id: string;
+  badge: string;
+  title: string;
+  subtitle: string;
+  href: string;
+  hrefText: string;
+  photo: string | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-vision-and-mission".
+ */
+export interface AboutVisionAndMission {
+  id: string;
+  mission: {
+    badge: string;
+    title: string;
+  };
+  diversity: {
+    title: string;
+    description: string;
+  };
+  vision: {
+    title: string;
+    description: string;
+  };
+  coreValues: {
+    title: string;
+    values?:
+      | {
+          name: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -520,6 +879,62 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'community-member';
         value: string | CommunityMember;
+      } | null)
+    | ({
+        relationTo: 'about-statistics';
+        value: string | AboutStatistic;
+      } | null)
+    | ({
+        relationTo: 'about-our-story';
+        value: string | AboutOurStory;
+      } | null)
+    | ({
+        relationTo: 'about-founders';
+        value: string | AboutFounder;
+      } | null)
+    | ({
+        relationTo: 'programs-hero';
+        value: string | ProgramsHero;
+      } | null)
+    | ({
+        relationTo: 'programs-section';
+        value: string | ProgramsSection;
+      } | null)
+    | ({
+        relationTo: 'get-involved-hero';
+        value: string | GetInvolvedHero;
+      } | null)
+    | ({
+        relationTo: 'get-involved-opportunities';
+        value: string | GetInvolvedOpportunity;
+      } | null)
+    | ({
+        relationTo: 'partnership-hero';
+        value: string | PartnershipHero;
+      } | null)
+    | ({
+        relationTo: 'partnership-options';
+        value: string | PartnershipOption;
+      } | null)
+    | ({
+        relationTo: 'volunteer-page';
+        value: string | VolunteerPage;
+      } | null)
+    | ({
+        relationTo: 'donate-page';
+        value: string | DonatePage;
+      } | null)
+    | ({
+        relationTo: 'program-details-data';
+        value: string | ProgramDetailsDatum;
+      } | null)
+    | ({
+        relationTo: 'about-hero';
+        value: string | AboutHero;
+      } | null)
+    | ({
+        relationTo: 'about-vision-and-mission';
+        value: string | AboutVisionAndMission;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -731,6 +1146,7 @@ export interface ProgramsSelect<T extends boolean = true> {
   hrefText?: T;
   startDate?: T;
   description?: T;
+  fullDescription?: T;
   tracks?:
     | T
     | {
@@ -760,6 +1176,316 @@ export interface CommunityMemberSelect<T extends boolean = true> {
   role?: T;
   description?: T;
   photo?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-statistics_select".
+ */
+export interface AboutStatisticsSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  metrics?:
+    | T
+    | {
+        value?: T;
+        label?: T;
+        suffix?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-our-story_select".
+ */
+export interface AboutOurStorySelect<T extends boolean = true> {
+  title?: T;
+  timelineItems?:
+    | T
+    | {
+        year?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-founders_select".
+ */
+export interface AboutFoundersSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  founders?:
+    | T
+    | {
+        name?: T;
+        role?: T;
+        workTitle?: T;
+        bio?: T;
+        linkedin?: T;
+        photo?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "programs-hero_select".
+ */
+export interface ProgramsHeroSelect<T extends boolean = true> {
+  badge?: T;
+  title?: T;
+  subtitle?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "programs-section_select".
+ */
+export interface ProgramsSectionSelect<T extends boolean = true> {
+  badge?: T;
+  title?: T;
+  subtitle?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "get-involved-hero_select".
+ */
+export interface GetInvolvedHeroSelect<T extends boolean = true> {
+  badge?: T;
+  title?: T;
+  subtitle?: T;
+  href?: T;
+  hrefText?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "get-involved-opportunities_select".
+ */
+export interface GetInvolvedOpportunitiesSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  opportunities?:
+    | T
+    | {
+        title?: T;
+        subtitle?: T;
+        description?: T;
+        iconName?: T;
+        link?: T;
+        linkText?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partnership-hero_select".
+ */
+export interface PartnershipHeroSelect<T extends boolean = true> {
+  badge?: T;
+  title?: T;
+  subtitle?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partnership-options_select".
+ */
+export interface PartnershipOptionsSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  options?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        benefits?:
+          | T
+          | {
+              benefit?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  brochureTitle?: T;
+  brochureDescription?: T;
+  brochureFile?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "volunteer-page_select".
+ */
+export interface VolunteerPageSelect<T extends boolean = true> {
+  heroBadge?: T;
+  heroTitle?: T;
+  heroDescription?: T;
+  missionTitle?: T;
+  missionContent?: T;
+  empowermentTitle?: T;
+  empowermentContent?: T;
+  opportunitiesTitle?: T;
+  opportunitiesContent?: T;
+  roles?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        link?: T;
+        linkText?: T;
+        requirements?:
+          | T
+          | {
+              requirement?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "donate-page_select".
+ */
+export interface DonatePageSelect<T extends boolean = true> {
+  badge?: T;
+  heroTitle?: T;
+  heroDescription?: T;
+  impacts?:
+    | T
+    | {
+        impact?: T;
+        id?: T;
+      };
+  allocationTitle?: T;
+  allocationItems?:
+    | T
+    | {
+        name?: T;
+        icon?: T;
+        id?: T;
+      };
+  methods?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        details?:
+          | T
+          | {
+              label?: T;
+              value?: T;
+              id?: T;
+            };
+        actionLink?: T;
+        actionText?: T;
+        iconType?: T;
+        id?: T;
+      };
+  faqs?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "program-details-data_select".
+ */
+export interface ProgramDetailsDataSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  overview?: T;
+  problemStatement?: T;
+  impacts?:
+    | T
+    | {
+        impact?: T;
+        id?: T;
+      };
+  ctaText?: T;
+  testimonials?:
+    | T
+    | {
+        quote?: T;
+        author?: T;
+        id?: T;
+      };
+  address?: T;
+  email?: T;
+  phone?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-hero_select".
+ */
+export interface AboutHeroSelect<T extends boolean = true> {
+  badge?: T;
+  title?: T;
+  subtitle?: T;
+  href?: T;
+  hrefText?: T;
+  photo?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-vision-and-mission_select".
+ */
+export interface AboutVisionAndMissionSelect<T extends boolean = true> {
+  mission?:
+    | T
+    | {
+        badge?: T;
+        title?: T;
+      };
+  diversity?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+      };
+  vision?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+      };
+  coreValues?:
+    | T
+    | {
+        title?: T;
+        values?:
+          | T
+          | {
+              name?: T;
+              id?: T;
+            };
+      };
   updatedAt?: T;
   createdAt?: T;
 }

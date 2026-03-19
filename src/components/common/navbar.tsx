@@ -7,10 +7,8 @@ import Link from "next/link";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Programs", href: "#programs" },
-  { label: "Spotlight", href: "#spotlight" },
-  { label: "Partners", href: "#partners" },
-  { label: "Contact", href: "#contact" },
+  { label: "Programs", href: "/programs" },
+  { label: "Get involved", href: "/get-involved" },
 ];
 
 export default function Navbar() {
@@ -47,7 +45,7 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           {/* Logo */}
-          <Link href="#home" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <div className="flex h-9 md:h-10 w-9 md:w-10 items-center justify-center rounded-xl bg-linear-to-br from-primary-light to-primary text-white font-bold text-sm md:text-lg">
               B
             </div>
@@ -72,10 +70,17 @@ export default function Navbar() {
               </Link>
             ))}
             <Link
-              href="#contact"
+              href="https://forms.gle/nVYxCLdGhBKvuxQ96"
+              target="_blank"
               className="ml-4 inline-flex items-center rounded-full bg-linear-to-r from-primary-light to-primary px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/40 hover:-translate-y-0.5"
             >
               Join Community
+            </Link>
+            <Link
+              href="/donate"
+              className="ml-4 inline-flex items-center rounded-full bg-linear-to-r from-primary-light to-primary px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-purple-500/25 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/40 hover:-translate-y-0.5"
+            >
+              Donate
             </Link>
           </div>
 
@@ -133,11 +138,19 @@ export default function Navbar() {
                 </motion.a>
               ))}
               <Link
-                href="#contact"
+                href="https://forms.gle/nVYxCLdGhBKvuxQ96"
+                target="_blank"
                 onClick={() => setIsOpen(false)}
                 className="mt-4 block rounded-full bg-linear-to-r from-primary to-primary px-6 py-3 text-center text-sm font-semibold text-white"
               >
                 Join Community
+              </Link>
+              <Link
+                href="/danate"
+                onClick={() => setIsOpen(false)}
+                className="mt-4 block rounded-full bg-linear-to-r from-primary to-primary px-6 py-3 text-center text-sm font-semibold text-white"
+              >
+                Donate
               </Link>
             </div>
           </motion.div>

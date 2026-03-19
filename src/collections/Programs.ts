@@ -36,6 +36,11 @@ export const Programs: CollectionConfig = {
     },
     {
       name: 'description',
+      type: 'text',
+      required: true,
+    },
+    {
+      name: 'fullDescription',
       type: 'richText',
       required: true,
     },
@@ -51,5 +56,5 @@ export const Programs: CollectionConfig = {
       required: true,
       hasMany: false,
     },
-  ],  
+  ],
 }
