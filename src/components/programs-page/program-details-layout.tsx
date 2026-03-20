@@ -9,6 +9,7 @@ import Link from 'next/link'
 import TestimonialSlider from './testimonial-slider'
 
 export default function ProgramDetailsLayout({ content }: { content: Program }) {
+  if (!content) return null
   return (
     <div className="bg-white">
       {/* Hero Section */}
@@ -153,7 +154,7 @@ export default function ProgramDetailsLayout({ content }: { content: Program }) 
                     <Clock className="text-primary w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-gray-900 mb-1">Date & Time</p>
+                    <p className="text-sm font-bold text-gray-900 mb-1">Date</p>
                     <p className="text-sm text-gray-600 leading-relaxed">
                       {moment(content.startDate).format('Do MMMM, YYYY')}
                     </p>

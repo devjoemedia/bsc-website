@@ -5,6 +5,7 @@ import { AboutHero } from '@/payload-types'
 import Link from 'next/link'
 
 export default function Hero({ hero }: { hero: AboutHero }) {
+  if (!hero) return null;
   return (
     <section
       id="home"

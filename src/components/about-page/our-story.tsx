@@ -52,6 +52,7 @@ interface OurStoryProps {
 }
 
 export default function OurStory({ our_story_data }: OurStoryProps) {
+  if (!our_story_data) return null;
   return (
     <section className="py-24 bg-white relative overflow-hidden">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 relative z-10">

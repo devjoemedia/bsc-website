@@ -4,6 +4,7 @@ import { motion } from 'motion/react'
 import { PartnershipHero } from '@/payload-types'
 
 export default function Hero({ content }: { content: PartnershipHero }) {
+  if (!content) return null;
   return (
     <section
       id="home"

@@ -52,6 +52,7 @@ interface StatisticsProps {
 }
 
 export default function Statistics({ statistics_data }: StatisticsProps) {
+  if (!statistics_data) return null;
   const stats = [
     { value: '1000+', label: 'Women Impacted' },
     { value: '77+', label: 'Girls Mentored' },

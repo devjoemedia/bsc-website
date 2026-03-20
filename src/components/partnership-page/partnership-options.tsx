@@ -30,6 +30,7 @@ const optionConfig: Record<number, OptionConfigItem> = {
   },
 }
 export default function PartnershipOptions({ content }: { content: PartnershipOption }) {
+  if (!content) return null;
   console.log('CONTENT::', content)
   return (
     <section className="py-24 bg-gray-50 relative">

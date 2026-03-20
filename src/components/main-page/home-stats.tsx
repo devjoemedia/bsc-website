@@ -7,6 +7,7 @@ interface StatProps {
   stats: Stat[]
 }
 const HomeStats: React.FC<StatProps> = ({ stats }) => {
+  if (!stats || stats.length === 0) return null;
   return (
     <div className="mx-auto max-w-7xl ">
       {/* Stats row */}

@@ -62,6 +62,7 @@ import Link from 'next/link'
 // };
 
 export default function VolunteerLayout({ content }: { content: VolunteerPage }) {
+  if (!content) return null;
   return (
     <div className="bg-white">
       {/* Hero Section */}

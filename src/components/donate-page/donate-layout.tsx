@@ -6,6 +6,7 @@ import { Laptop, GraduationCap, ArrowRight, Heart, CreditCard, HelpCircle } from
 import Link from 'next/link'
 
 export default function DonateLayout({ content }: { content: DonatePage }) {
+  if (!content) return null;
   return (
     <div className="bg-white">
       {/* Hero Section */}

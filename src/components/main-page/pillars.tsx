@@ -12,6 +12,7 @@ interface PillarsProps {
 }
 
 const HomePillars: React.FC<PillarsProps> = ({ data }) => {
+  if (!data || !data.title) return null;
   return (
     <section className="relative py-24 sm:py-32 bg-gray-50">
       {/* Decorative */}

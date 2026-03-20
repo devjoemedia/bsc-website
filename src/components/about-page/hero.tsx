@@ -8,6 +8,7 @@ interface HeroProps {
 }
 
 export default function Hero({ hero_data }: HeroProps) {
+  if (!hero_data) return null;
   return (
     <section
       id="home"

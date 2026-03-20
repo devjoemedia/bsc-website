@@ -5,6 +5,7 @@ import { GetInvolvedHero } from '@/payload-types'
 import Link from 'next/link'
 
 export default function Hero({ hero_data }: { hero_data: GetInvolvedHero }) {
+  if (!hero_data) return null;
   return (
     <section
       id="home"

@@ -17,6 +17,8 @@ const HomeHero: React.FC<HomeHeroProps> = ({ items }) => {
   const timerRef = useRef<NodeJS.Timeout | null>(null)
   const isPausedRef = useRef(false)
 
+  if (!items || items.length === 0) return null;
+
   const startAutoSlide = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current)
     timerRef.current = setInterval(() => {

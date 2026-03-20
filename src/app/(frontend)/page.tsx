@@ -100,13 +100,13 @@ export default async function HomePage() {
     <div className="">
       <Navbar />
       <main>
-        <HomeHero items={hero_response?.docs} />
-        <HomeStats stats={stats_response?.docs[0].stats as Stat[]} />
-        <About data={about_response?.docs[0]} />
-        <HomePillars data={pillars_response?.docs[0]} />
-        <Programs programs={programs_response.docs} data={programs_section_response?.docs[0]} />
-        <Spotlight data={spotlight_response?.docs[0]} />
-        <Partnerships data={partnership_response?.docs[0]} />
+        <HomeHero items={hero_response?.docs || []} />
+        <HomeStats stats={(stats_response?.docs[0]?.stats as Stat[]) || []} />
+        {about_response?.docs[0] && <About data={about_response.docs[0]} />}
+        {pillars_response?.docs[0] && <HomePillars data={pillars_response.docs[0]} />}
+        {programs_section_response?.docs[0] && <Programs programs={programs_response?.docs || []} data={programs_section_response.docs[0]} />}
+        {spotlight_response?.docs[0] && <Spotlight data={spotlight_response.docs[0]} />}
+        {partnership_response?.docs[0] && <Partnerships data={partnership_response.docs[0]} />}
       </main>
       <Footer />
     </div>

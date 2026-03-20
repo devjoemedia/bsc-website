@@ -9,6 +9,7 @@ interface VisionMissionProps {
 }
 
 export default function VisionMission({ vision_mission_data }: VisionMissionProps) {
+  if (!vision_mission_data) return null;
   const container = {
     hidden: { opacity: 0 },
     show: {

@@ -18,6 +18,8 @@ const Spotlight: React.FC<SpotlightProps> = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedMember, setSelectedMember] = useState<CommunityMember | null>(null)
 
+  if (!data || !data.title) return null;
+
   const member_spotlight = data.memberToSpotlight as CommunityMember
   const members = data.members as CommunityMember[]
 

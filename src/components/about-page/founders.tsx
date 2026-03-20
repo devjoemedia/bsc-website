@@ -31,6 +31,7 @@ interface FoundersProps {
 }
 
 export default function Founders({ founders_data }: FoundersProps) {
+  if (!founders_data) return null;
   return (
     <section className="py-24 bg-bsc-yellow/20 relative">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
