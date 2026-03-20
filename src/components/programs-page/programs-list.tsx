@@ -1,6 +1,6 @@
 'use client'
 
-import { AboutHero, Program, ProgramsSection } from '@/payload-types'
+import { Program, ProgramsSection } from '@/payload-types'
 import { motion } from 'motion/react'
 import { ArrowRight, Users, Target } from 'lucide-react'
 
@@ -37,7 +37,7 @@ export default function ProgramsList({
   programs: Program[]
   content: ProgramsSection
 }) {
-  if (!content) return null;
+  if (!content) return null
   return (
     <section className="py-24 bg-gray-50 relative z-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

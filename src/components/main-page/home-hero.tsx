@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'motion/react'
 import { HomeHero as IHomeHero, Media } from '@/payload-types'
 import RichTextRenderer from '../common/rich-text-renderer'
@@ -12,32 +13,34 @@ interface HomeHeroProps {
 }
 
 const HomeHero: React.FC<HomeHeroProps> = ({ items }) => {
+  // Early return FIRST, then no more returns before hooks run.
+  // if (!items || items.length === 0) return null
+
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
   const timerRef = useRef<NodeJS.Timeout | null>(null)
   const isPausedRef = useRef(false)
+  const length = items.length
 
-  if (!items || items.length === 0) return null;
+  const clearTimer = useCallback(() => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current)
+      timerRef.current = null
+    }
+  }, [])
 
   const startAutoSlide = useCallback(() => {
-    if (timerRef.current) clearInterval(timerRef.current)
+    clearTimer()
     timerRef.current = setInterval(() => {
       if (!isPausedRef.current) {
         setIsTransitioning(true)
         setTimeout(() => {
-          setCurrentSlide((prev) => (prev + 1) % items.length)
+          setCurrentSlide((prev) => (prev + 1) % length)
           setIsTransitioning(false)
         }, 300)
       }
     }, 6000)
-  }, [])
-
-  useEffect(() => {
-    startAutoSlide()
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current)
-    }
-  }, [startAutoSlide])
+  }, [clearTimer, length])
 
   const goToSlide = useCallback(
     (index: number) => {
@@ -52,12 +55,19 @@ const HomeHero: React.FC<HomeHeroProps> = ({ items }) => {
   )
 
   const nextSlide = useCallback(() => {
-    goToSlide((currentSlide + 1) % items.length)
-  }, [currentSlide, goToSlide])
+    goToSlide((currentSlide + 1) % length)
+  }, [currentSlide, goToSlide, length])
 
   const prevSlide = useCallback(() => {
-    goToSlide((currentSlide - 1 + items.length) % items.length)
-  }, [currentSlide, goToSlide])
+    goToSlide((currentSlide - 1 + length) % length)
+  }, [currentSlide, goToSlide, length])
+
+  useEffect(() => {
+    startAutoSlide()
+    return () => {
+      clearTimer()
+    }
+  }, [startAutoSlide, clearTimer])
 
   const slide = items[currentSlide]
 
@@ -70,10 +80,11 @@ const HomeHero: React.FC<HomeHeroProps> = ({ items }) => {
           className="absolute inset-0 transition-opacity duration-700 ease-in-out"
           style={{ opacity: i === currentSlide && !isTransitioning ? 1 : 0 }}
         >
-          <img
+          <Image
             src={(s.photo as Media).url as string}
             alt=""
-            className="absolute inset-0 w-full h-full object-cover"
+            fill
+            className="object-cover"
             loading={i === 0 ? 'eager' : 'lazy'}
           />
         </div>
@@ -84,7 +95,6 @@ const HomeHero: React.FC<HomeHeroProps> = ({ items }) => {
 
       {/* Content */}
       <div className="relative font-recoleta z-10 flex flex-col items-center justify-center min-h-[90vh] md:min-h-[90vh] px-4 text-center">
-        {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -97,7 +107,6 @@ const HomeHero: React.FC<HomeHeroProps> = ({ items }) => {
           </span>
         </motion.div>
 
-        {/* Main heading */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -107,7 +116,6 @@ const HomeHero: React.FC<HomeHeroProps> = ({ items }) => {
           {slide.title}
         </motion.h1>
 
-        {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -117,7 +125,6 @@ const HomeHero: React.FC<HomeHeroProps> = ({ items }) => {
           <RichTextRenderer content={slide.subtitle} />
         </motion.p>
 
-        {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

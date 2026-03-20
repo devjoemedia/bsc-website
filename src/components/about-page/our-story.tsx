@@ -3,56 +3,12 @@
 import { AboutOurStory } from '@/payload-types'
 import { motion } from 'motion/react'
 
-const timelineEvents = [
-  {
-    date: 'January 2021',
-    title: 'BSC was founded',
-    desc: 'Because She Can was founded by two friends with lived experience in the Ghanaian Tech ecosystem.',
-  },
-  {
-    date: 'December 2021',
-    title: 'First DFWWC Donation',
-    desc: 'Launched the first CodeBridge Program (formerly DfWWC) with donations to 5 girls.',
-  },
-  {
-    date: 'June - August 2022',
-    title: 'First Mentorship Cohort',
-    desc: 'Launched the first cohort of the annual mentorship program.',
-  },
-  {
-    date: 'December 2022',
-    title: 'Second DFWWC Donation',
-    desc: 'Launched the second CodeBridge Program with donations to 5 girls.',
-  },
-  {
-    date: 'June 2023',
-    title: 'Second Mentorship Cohort',
-    desc: 'Launched the second cohort with 3 laptop donations.',
-  },
-  {
-    date: 'September 2023',
-    title: 'Girls in Tech Partnership',
-    desc: 'Partnership with Play and Learn Foundation providing training on basic computer skills.',
-  },
-  {
-    date: 'December 2023',
-    title: 'Tap into Tech Ghana Event',
-    desc: 'Organized in partnership with Black Girls in Tech at the Google Office, Accra.',
-  },
-  { date: 'February 2024', title: 'Career Retreat', desc: 'With Women Talk UK at SN Incubator.' },
-  {
-    date: 'May - July 2024',
-    title: 'Third Mentorship Cohort',
-    desc: 'Launched the third cohort of the annual mentorship program.',
-  },
-]
-
 interface OurStoryProps {
   our_story_data: AboutOurStory
 }
 
 export default function OurStory({ our_story_data }: OurStoryProps) {
-  if (!our_story_data) return null;
+  if (!our_story_data) return null
   return (
     <section className="py-24 bg-white relative overflow-hidden">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 relative z-10">

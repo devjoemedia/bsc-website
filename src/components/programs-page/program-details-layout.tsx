@@ -2,7 +2,7 @@
 
 import { Program } from '@/payload-types'
 import { motion } from 'motion/react'
-import { MapPin, Mail, Phone, Quote, CheckCircle2, Clock } from 'lucide-react'
+import { MapPin, Mail, Phone, CheckCircle2, Clock } from 'lucide-react'
 import RichTextRenderer from '../common/rich-text-renderer'
 import moment from 'moment'
 import Link from 'next/link'

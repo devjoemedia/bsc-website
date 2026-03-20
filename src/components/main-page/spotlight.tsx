@@ -1,7 +1,6 @@
 'use client'
 
-import { motion } from 'motion/react'
-import ScrollReveal, { StaggerContainer, staggerChildVariants } from './scroll-reveal'
+import ScrollReveal, { StaggerContainer } from './scroll-reveal'
 import { MemberDetails } from '../common/community-members/member-details'
 import { useState } from 'react'
 import { CommunityMember, HomeMemberSpotlight, Media } from '@/payload-types'
@@ -16,17 +15,17 @@ interface SpotlightProps {
 
 const Spotlight: React.FC<SpotlightProps> = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [selectedMember, setSelectedMember] = useState<CommunityMember | null>(null)
+  // const [selectedMember, setSelectedMember] = useState<CommunityMember | null>(null)
 
-  if (!data || !data.title) return null;
+  if (!data || !data.title) return null
 
   const member_spotlight = data.memberToSpotlight as CommunityMember
   const members = data.members as CommunityMember[]
 
-  const handleMemberSelect = (selected_member: CommunityMember) => {
-    setSelectedMember(selected_member)
-    setIsOpen(true)
-  }
+  // const handleMemberSelect = (selected_member: CommunityMember) => {
+  //   setSelectedMember(selected_member)
+  //   setIsOpen(true)
+  // }
 
   return (
     <section
@@ -146,7 +145,7 @@ const Spotlight: React.FC<SpotlightProps> = ({ data }) => {
         </div>
       </div>
 
-      <MemberDetails isOpen={isOpen} setIsOpen={setIsOpen} member={selectedMember} />
+      <MemberDetails isOpen={isOpen} setIsOpen={setIsOpen} member={null} />
     </section>
   )
 }

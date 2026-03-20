@@ -4,21 +4,25 @@ import React from 'react'
 import Link from 'next/link'
 import { motion } from 'motion/react'
 import { HomeHero as IHomeHero } from '@/payload-types'
+import Image from 'next/image'
 
 interface ProgramDetailsHeroProps {
   items?: IHomeHero[]
 }
 
 const ProgramDetailsHero: React.FC<ProgramDetailsHeroProps> = ({ items }) => {
+  console.log(items)
   return (
     <section className="relative w-full min-h-[90vh] md:min-h-[60vh] overflow-hidden">
       {/* Background slides */}
       <div className="absolute inset-0 transition-opacity duration-700 ease-in-out">
-        <img
+        <Image
           src={`/images/bg.png`}
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
           loading={'lazy'}
+          width={1920}
+          height={1080}
         />
       </div>
 

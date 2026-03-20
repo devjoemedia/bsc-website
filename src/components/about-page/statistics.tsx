@@ -10,7 +10,7 @@ const Counter = ({ value, label }: { value: string; label: string }) => {
   const [count, setCount] = useState(0)
 
   const target = parseInt(value.replace(/[^0-9]/g, ''))
-  const suffix = value.replace(/[0-9]/g, '')
+  // const suffix = value.replace(/[0-9]/g, '')
 
   useEffect(() => {
     if (isInView) {
@@ -52,14 +52,7 @@ interface StatisticsProps {
 }
 
 export default function Statistics({ statistics_data }: StatisticsProps) {
-  if (!statistics_data) return null;
-  const stats = [
-    { value: '1000+', label: 'Women Impacted' },
-    { value: '77+', label: 'Girls Mentored' },
-    { value: '15+', label: 'Countries' },
-    { value: '13+', label: 'Laptops Donated' },
-  ]
-
+  if (!statistics_data) return null
   return (
     <section className="relative py-24 overflow-hidden bg-primary text-white">
       {/* Decorative gradient */}

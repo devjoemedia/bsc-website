@@ -6,32 +6,12 @@ import { Linkedin } from 'lucide-react'
 import RichTextRenderer from '../common/rich-text-renderer'
 import Image from 'next/image'
 
-const founders = [
-  {
-    name: 'Otema Yirenkyi',
-    role: 'Co-Founder & Operations Director',
-    title: 'Data Scientist',
-    linkedin: 'https://www.linkedin.com/in/otemayirenkyi/',
-    bio: "My lived experiences as an African woman striving to use Technology as a medium in solving my community and continent's issues is why Because She Can was born. I saw first-hand how conditions were oftentimes not favorable to me and other women alike. I did not want other women to have to go through what I went through before coming out as success stories.",
-    image: 'https://ui-avatars.com/api/?name=Otema+Yirenkyi&background=723b69&color=fff&size=256',
-  },
-  {
-    name: 'Kweyakie Afi Blebo',
-    role: 'Co-Founder & Programs Director',
-    title: 'Data Scientist',
-    linkedin: 'https://www.linkedin.com/in/kweyakieblebo/',
-    bio: "It is one thing to read statistics about the underrepresentation of women in technology and it's an entirely different experience to confront the reality that you are a walking statistic. The work we do at Because She Can is deeply personal, and a bigger achievement for me is creating opportunities and advocating for policy changes.",
-    image:
-      'https://ui-avatars.com/api/?name=Kweyakie+Afi+Blebo&background=723b69&color=fff&size=256',
-  },
-]
-
 interface FoundersProps {
   founders_data: AboutFounder
 }
 
 export default function Founders({ founders_data }: FoundersProps) {
-  if (!founders_data) return null;
+  if (!founders_data) return null
   return (
     <section className="py-24 bg-bsc-yellow/20 relative">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
