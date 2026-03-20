@@ -1,20 +1,17 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
-import ScrollReveal, {
-  StaggerContainer,
-  staggerChildVariants,
-} from "./scroll-reveal";
-import { HomePillar } from "@/payload-types";
-import HighlightedTitle from "../common/hilight-text";
-import { Shield } from "lucide-react";
-import RichTextRenderer from "../common/rich-text-renderer";
+import { motion } from 'motion/react'
+import ScrollReveal, { StaggerContainer, staggerChildVariants } from './scroll-reveal'
+import { HomePillar } from '@/payload-types'
+import HighlightedTitle from '../common/hilight-text'
+import { Shield } from 'lucide-react'
+import RichTextRenderer from '../common/rich-text-renderer'
 
 interface PillarsProps {
   data: HomePillar
 }
 
-const HomePillars:React.FC<PillarsProps> = ({ data })=> {
+const HomePillars: React.FC<PillarsProps> = ({ data }) => {
   return (
     <section className="relative py-24 sm:py-32 bg-gray-50">
       {/* Decorative */}
@@ -49,9 +46,7 @@ const HomePillars:React.FC<PillarsProps> = ({ data })=> {
                 <Shield size={34} />
               </div>
 
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
-                {pillar.title}
-              </h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">{pillar.title}</h3>
               <p className="text-gray-600 leading-relaxed">
                 <RichTextRenderer content={pillar.subtitle} />
               </p>
@@ -60,7 +55,7 @@ const HomePillars:React.FC<PillarsProps> = ({ data })=> {
         </StaggerContainer>
       </div>
     </section>
-  );
+  )
 }
 
 export default HomePillars

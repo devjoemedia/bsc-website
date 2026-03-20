@@ -1,46 +1,45 @@
-"use client";
+'use client'
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'motion/react'
+import Link from 'next/link'
 
 const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Programs", href: "/programs" },
-  { label: "Get involved", href: "/get-involved" },
-];
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Programs', href: '/programs' },
+  { label: 'Get involved', href: '/get-involved' },
+]
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
       if (!isOpen) {
-        setScrolled(window.scrollY > 20);
+        setScrolled(window.scrollY > 20)
       }
-    };
+    }
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll)
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isOpen]);
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [isOpen])
 
   useEffect(() => {
-    if (isOpen) setScrolled(true);
-    if (!isOpen) setScrolled(window.scrollY > 20);
-  }, [isOpen]);
+    if (isOpen) setScrolled(true)
+    if (!isOpen) setScrolled(window.scrollY > 20)
+  }, [isOpen])
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-          ? "bg-white/90 backdrop-blur-lg shadow-lg shadow-purple-900/5"
-          : "bg-transparent"
-        }`}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-white/90 backdrop-blur-lg shadow-lg shadow-purple-900/5' : 'bg-transparent'
+      }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
@@ -50,8 +49,9 @@ export default function Navbar() {
               B
             </div>
             <span
-              className={`text-lg md:text-xl font-bold transition-colors duration-300 ${scrolled ? "text-purple-900" : "text-white"
-                }`}
+              className={`text-lg md:text-xl font-bold transition-colors duration-300 ${
+                scrolled ? 'text-purple-900' : 'text-white'
+              }`}
             >
               BSC
             </span>
@@ -63,8 +63,9 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:bg-primary-light hover:text-primary ${scrolled ? "text-gray-700" : "text-white/90 hover:text-white"
-                  }`}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:bg-primary-light hover:text-primary ${
+                  scrolled ? 'text-gray-700' : 'text-white/90 hover:text-white'
+                }`}
               >
                 {link.label}
               </Link>
@@ -93,20 +94,21 @@ export default function Navbar() {
             <div className="flex flex-col gap-1.5">
               <motion.span
                 animate={isOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
-                className={`block h-0.5 w-6 rounded-full transition-colors ${isOpen || scrolled ? "bg-purple-900" : "bg-white"
-                  }`}
+                className={`block h-0.5 w-6 rounded-full transition-colors ${
+                  isOpen || scrolled ? 'bg-purple-900' : 'bg-white'
+                }`}
               />
               <motion.span
                 animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
-                className={`block h-0.5 w-6 rounded-full transition-colors ${isOpen || scrolled ? "bg-purple-900" : "bg-white"
-                  }`}
+                className={`block h-0.5 w-6 rounded-full transition-colors ${
+                  isOpen || scrolled ? 'bg-purple-900' : 'bg-white'
+                }`}
               />
               <motion.span
-                animate={
-                  isOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }
-                }
-                className={`block h-0.5 w-6 rounded-full transition-colors ${isOpen || scrolled ? "bg-purple-900" : "bg-white"
-                  }`}
+                animate={isOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+                className={`block h-0.5 w-6 rounded-full transition-colors ${
+                  isOpen || scrolled ? 'bg-purple-900' : 'bg-white'
+                }`}
               />
             </div>
           </button>
@@ -118,7 +120,7 @@ export default function Navbar() {
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
+            animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
             className="md:hidden overflow-hidden bg-white/95 backdrop-blur-xld border-t border-purple-100"
@@ -157,5 +159,5 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </motion.nav>
-  );
+  )
 }

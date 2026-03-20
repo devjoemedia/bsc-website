@@ -1,15 +1,15 @@
-"use client";
+'use client'
 
-import { motion, useInView } from "framer-motion";
-import { useRef, ReactNode } from "react";
+import { motion, useInView } from 'motion/react'
+import { useRef, ReactNode } from 'react'
 
 interface ScrollRevealProps {
-  children: ReactNode;
-  className?: string;
-  direction?: "up" | "down" | "left" | "right";
-  delay?: number;
-  duration?: number;
-  once?: boolean;
+  children: ReactNode
+  className?: string
+  direction?: 'up' | 'down' | 'left' | 'right'
+  delay?: number
+  duration?: number
+  once?: boolean
 }
 
 const directionOffsets = {
@@ -17,29 +17,25 @@ const directionOffsets = {
   down: { y: -60, x: 0 },
   left: { x: 60, y: 0 },
   right: { x: -60, y: 0 },
-};
+}
 
 export default function ScrollReveal({
   children,
-  className = "",
-  direction = "up",
+  className = '',
+  direction = 'up',
   delay = 0,
   duration = 0.6,
   once = true,
 }: ScrollRevealProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once, margin: "-80px" });
-  const offset = directionOffsets[direction];
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once, margin: '-80px' })
+  const offset = directionOffsets[direction]
 
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, x: offset.x, y: offset.y }}
-      animate={
-        isInView
-          ? { opacity: 1, x: 0, y: 0 }
-          : { opacity: 0, x: offset.x, y: offset.y }
-      }
+      animate={isInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: offset.x, y: offset.y }}
       transition={{
         duration,
         delay,
@@ -49,29 +45,29 @@ export default function ScrollReveal({
     >
       {children}
     </motion.div>
-  );
+  )
 }
 
 // Stagger container for child animations
 interface StaggerContainerProps {
-  children: ReactNode;
-  className?: string;
-  staggerDelay?: number;
+  children: ReactNode
+  className?: string
+  staggerDelay?: number
 }
 
 export function StaggerContainer({
   children,
-  className = "",
+  className = '',
   staggerDelay = 0.15,
 }: StaggerContainerProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
     <motion.div
       ref={ref}
       initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      animate={isInView ? 'visible' : 'hidden'}
       variants={{
         hidden: {},
         visible: {
@@ -84,7 +80,7 @@ export function StaggerContainer({
     >
       {children}
     </motion.div>
-  );
+  )
 }
 
 export const staggerChildVariants = {
@@ -97,4 +93,4 @@ export const staggerChildVariants = {
       ease: [0.25, 0.4, 0.25, 1] as [number, number, number, number],
     },
   },
-};
+}

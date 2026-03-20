@@ -1,38 +1,41 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
-import { Handshake, Heart, Briefcase, FileDown, ArrowRight } from "lucide-react";
+import { Media, PartnershipOption } from '@/payload-types'
+import { motion } from 'motion/react'
+import { Handshake, Heart, Briefcase, FileDown, ArrowRight } from 'lucide-react'
+import Link from 'next/link'
+import { ReactNode } from 'react'
 
-const options = [
-  {
-    num: "01",
-    title: "Join Our Mission",
-    desc: "Calling on organizations, companies, and individuals to partner with us in our mission. Let's pool our resources, knowledge, and passion to break barriers, provide opportunities, and create a tech world where everyone's voice is heard.",
+interface OptionConfigItem {
+  num: string
+  color: string
+  icon: ReactNode
+}
+
+const optionConfig: Record<number, OptionConfigItem> = {
+  0: {
+    num: '01',
+    color: 'bg-primary',
     icon: <Handshake className="w-8 h-8 text-white" />,
-    color: "bg-primary"
   },
-  {
-    num: "02",
-    title: "Sponsor our Programs",
-    desc: "Partner with us by sponsoring our programs and events. Your monetary support will provide laptops, mentorship, and vital training to women and girls, opening doors to tech careers they may have never dreamed of.",
+  1: {
+    num: '02',
+    color: 'bg-primary-light',
     icon: <Heart className="w-8 h-8 text-white" />,
-    color: "bg-primary-light"
   },
-  {
-    num: "03",
-    title: "Recruit a talent",
-    desc: "Partner with us and tap into a pool of exceptional individuals from our thriving tech community. Our community members are highly skilled and holistically trained to be fantastic additions to your team, locally and internationally.",
+  2: {
+    num: '03',
+    color: 'bg-[#b80018]',
     icon: <Briefcase className="w-8 h-8 text-white" />,
-    color: "bg-[#b80018]"
-  }
-];
-
-export default function PartnershipOptions() {
+  },
+}
+export default function PartnershipOptions({ content }: { content: PartnershipOption }) {
+  console.log('CONTENT::', content)
   return (
     <section className="py-24 bg-gray-50 relative">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
-          {options.map((opt, idx) => (
+          {content.options?.map((opt, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
@@ -42,15 +45,17 @@ export default function PartnershipOptions() {
               className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden group"
             >
               <div className="absolute -right-6 -top-6 text-9xl font-bold text-gray-50 font-recoleta group-hover:text-primary/5 transition-colors duration-500 pointer-events-none">
-                {opt.num}
+                0{idx + 1}
               </div>
-              <div className={`w-16 h-16 rounded-2xl ${opt.color} flex items-center justify-center mb-8 relative shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500`}>
-                {opt.icon}
+              <div
+                className={`w-16 h-16 rounded-2xl ${optionConfig[idx].color} flex items-center justify-center mb-8 relative shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500`}
+              >
+                {optionConfig[idx].icon}
               </div>
-              <h3 className="text-2xl font-recoleta font-bold text-gray-900 mb-4 relative">{opt.title}</h3>
-              <p className="text-gray-600 leading-relaxed relative">
-                {opt.desc}
-              </p>
+              <h3 className="text-2xl font-recoleta font-bold text-gray-900 mb-4 relative">
+                {opt.title}
+              </h3>
+              <p className="text-gray-600 leading-relaxed relative">{opt.description}</p>
             </motion.div>
           ))}
         </div>
@@ -67,17 +72,23 @@ export default function PartnershipOptions() {
             <div className="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center mx-auto mb-8 backdrop-blur-md border border-white/20">
               <FileDown className="w-10 h-10 text-white" />
             </div>
-            <h2 className="text-3xl md:text-5xl font-recoleta font-bold mb-6">Because She Can Brochure</h2>
+            <h2 className="text-3xl md:text-5xl font-recoleta font-bold mb-6">
+              {content.brochureTitle}
+            </h2>
             <p className="text-lg text-white/80 mb-10 leading-relaxed">
-              Download our company brochure to get detailed information and metrics of the work we are doing in building the biggest pipeline of African women. Learn how you can support too.
+              {content.brochureDescription}
             </p>
-            <button className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-primary font-bold text-lg hover:scale-105 active:scale-95 transition-all shadow-xl hover:shadow-2xl">
+            <Link
+              href={(content.brochureFile as Media).url as string}
+              download
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-primary font-bold text-lg hover:scale-105 active:scale-95 transition-all shadow-xl hover:shadow-2xl"
+            >
               Download Brochure
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </Link>
           </div>
         </motion.div>
       </div>
     </section>
-  );
+  )
 }

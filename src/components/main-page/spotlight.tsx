@@ -1,17 +1,14 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
-import ScrollReveal, {
-  StaggerContainer,
-  staggerChildVariants,
-} from "./scroll-reveal";
-import { MemberDetails } from "../common/community-members/member-details";
-import { useState } from "react";
-import { CommunityMember, HomeMemberSpotlight, Media } from "@/payload-types";
-import HighlightedTitle from "../common/hilight-text";
-import Image from "next/image";
-import RichTextRenderer from "../common/rich-text-renderer";
-import MembersList from "../common/community-members/members-list";
+import { motion } from 'motion/react'
+import ScrollReveal, { StaggerContainer, staggerChildVariants } from './scroll-reveal'
+import { MemberDetails } from '../common/community-members/member-details'
+import { useState } from 'react'
+import { CommunityMember, HomeMemberSpotlight, Media } from '@/payload-types'
+import HighlightedTitle from '../common/hilight-text'
+import Image from 'next/image'
+import RichTextRenderer from '../common/rich-text-renderer'
+import MembersList from '../common/community-members/members-list'
 
 interface SpotlightProps {
   data: HomeMemberSpotlight
@@ -62,28 +59,18 @@ const Spotlight: React.FC<SpotlightProps> = ({ data }) => {
                   />
                   {/* <span className="text-5xl font-bold text-white">EA</span> */}
                 </div>
-                <h3 className="text-2xl font-bold text-white">
-                  {member_spotlight.name}
-                </h3>
-                <p className="text-purple-200 mt-1 font-medium">
-                  {member_spotlight.role}
-                </p>
+                <h3 className="text-2xl font-bold text-white">{member_spotlight.name}</h3>
+                <p className="text-purple-200 mt-1 font-medium">{member_spotlight.role}</p>
                 <div className="mt-4 flex items-center gap-2">
                   <span className="inline-block h-2 w-2 rounded-full bg-gold-400 animate-pulse" />
-                  <span className="text-sm text-purple-200">
-                    BSC Alumni
-                  </span>
+                  <span className="text-sm text-purple-200">BSC Alumni</span>
                 </div>
               </div>
 
               {/* Right: Story */}
               <div className="lg:col-span-3 p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
                 <div className="flex items-center gap-2 mb-4">
-                  <svg
-                    className="h-8 w-8 text-primary"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg className="h-8 w-8 text-primary" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                   </svg>
                 </div>
@@ -100,12 +87,8 @@ const Spotlight: React.FC<SpotlightProps> = ({ data }) => {
         {/* Community Members */}
         <div className="mt-20">
           <ScrollReveal className="text-center mb-10">
-            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">
-              {data.titleTwo}
-            </h3>
-            <p className="mt-2 text-gray-600">
-              {data.descriptionTwo}
-            </p>
+            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">{data.titleTwo}</h3>
+            <p className="mt-2 text-gray-600">{data.descriptionTwo}</p>
           </ScrollReveal>
 
           {/* <StaggerContainer className="grid sm:grid-cols-3 gap-6">
@@ -154,7 +137,7 @@ const Spotlight: React.FC<SpotlightProps> = ({ data }) => {
           </StaggerContainer> */}
 
           <StaggerContainer className="">
-            <div className=' mx-auto container'>
+            <div className=" mx-auto container">
               <MembersList members={members} />
             </div>
           </StaggerContainer>
@@ -163,7 +146,7 @@ const Spotlight: React.FC<SpotlightProps> = ({ data }) => {
 
       <MemberDetails isOpen={isOpen} setIsOpen={setIsOpen} member={selectedMember} />
     </section>
-  );
+  )
 }
 
 export default Spotlight

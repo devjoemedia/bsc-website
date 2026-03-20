@@ -1,46 +1,40 @@
-"use client";
+'use client'
 
-import { motion, useInView } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
-import ScrollReveal from "./scroll-reveal";
-import { HomeMission } from "@/payload-types";
-import HighlightedTitle from "../common/hilight-text";
-import RichTextRenderer from "../common/rich-text-renderer";
+import { motion, useInView } from 'motion/react'
+import { useRef, useEffect, useState } from 'react'
+import ScrollReveal from './scroll-reveal'
+import { HomeMission } from '@/payload-types'
+import HighlightedTitle from '../common/hilight-text'
+import RichTextRenderer from '../common/rich-text-renderer'
 
-function AnimatedCounter({
-  target,
-  suffix = "",
-}: {
-  target: number;
-  suffix?: string;
-}) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  const [count, setCount] = useState(0);
+function AnimatedCounter({ target, suffix = '' }: { target: number; suffix?: string }) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
+  const [count, setCount] = useState(0)
 
   useEffect(() => {
-    if (!isInView) return;
-    let start = 0;
-    const duration = 2000;
-    const increment = target / (duration / 16);
+    if (!isInView) return
+    let start = 0
+    const duration = 2000
+    const increment = target / (duration / 16)
     const timer = setInterval(() => {
-      start += increment;
+      start += increment
       if (start >= target) {
-        setCount(target);
-        clearInterval(timer);
+        setCount(target)
+        clearInterval(timer)
       } else {
-        setCount(Math.floor(start));
+        setCount(Math.floor(start))
       }
-    }, 16);
-    return () => clearInterval(timer);
-  }, [isInView, target]);
+    }, 16)
+    return () => clearInterval(timer)
+  }, [isInView, target])
 
   return (
     <span ref={ref}>
       {count}
       {suffix}
     </span>
-  );
+  )
 }
 
 interface AboutProps {
@@ -104,14 +98,9 @@ const About: React.FC<AboutProps> = ({ data }) => {
                   <div
                     className={`text-3xl sm:text-4xl font-bold bg-linear-to-r from-primary-light bg-clip-text text-transparent`}
                   >
-                    <AnimatedCounter
-                      target={Number(stat.value)}
-                      suffix={String(stat.surfix)}
-                    />
+                    <AnimatedCounter target={Number(stat.value)} suffix={String(stat.surfix)} />
                   </div>
-                  <div className="mt-2 text-sm text-gray-500">
-                    {stat.label} 
-                  </div>
+                  <div className="mt-2 text-sm text-gray-500">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
@@ -119,8 +108,7 @@ const About: React.FC<AboutProps> = ({ data }) => {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
 export default About
-

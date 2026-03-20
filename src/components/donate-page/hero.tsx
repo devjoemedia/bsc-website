@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
+import { motion } from 'motion/react'
 
 export default function Hero() {
   return (
@@ -12,17 +12,17 @@ export default function Hero() {
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
           className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-purple-600/30 blur-3xl"
         />
         <motion.div
           animate={{ scale: [1.2, 1, 1.2], rotate: [0, -90, 0] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
           className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-gold-500/20 blur-3xl"
         />
         <motion.div
           animate={{ y: [0, -30, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
           className="absolute top-1/4 right-1/4 h-64 w-64 rounded-full bg-purple-500/20 blur-2xl"
         />
         {/* Grid pattern overlay */}
@@ -30,8 +30,8 @@ export default function Hero() {
           className="absolute inset-0 opacity-5"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
+              'linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)',
+            backgroundSize: '60px 60px',
           }}
         />
       </div>
@@ -57,7 +57,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight tracking-tight"
         >
-         Donate now to help a girl in tech
+          Donate now to help a girl in tech
         </motion.h1>
 
         {/* Subtitle */}
@@ -91,11 +91,7 @@ export default function Hero() {
               stroke="currentColor"
               strokeWidth={2}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
           {/* <a
@@ -131,5 +127,5 @@ export default function Hero() {
         </motion.div> */}
       </div>
     </section>
-  );
+  )
 }

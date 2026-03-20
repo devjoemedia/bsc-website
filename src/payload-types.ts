@@ -449,9 +449,14 @@ export interface Program {
   badge: string;
   cohort: string;
   title: string;
-  href?: string | null;
-  hrefText?: string | null;
+  href: string;
+  hrefText: string;
   startDate: string;
+  location: string;
+  email: string;
+  phone: string;
+  ctaText: string;
+  problemStatement: string;
   description: string;
   fullDescription: {
     root: {
@@ -471,6 +476,13 @@ export interface Program {
   tracks?:
     | {
         text?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  testimonials?:
+    | {
+        quote: string;
+        author: string;
         id?: string | null;
       }[]
     | null;
@@ -1145,12 +1157,24 @@ export interface ProgramsSelect<T extends boolean = true> {
   href?: T;
   hrefText?: T;
   startDate?: T;
+  location?: T;
+  email?: T;
+  phone?: T;
+  ctaText?: T;
+  problemStatement?: T;
   description?: T;
   fullDescription?: T;
   tracks?:
     | T
     | {
         text?: T;
+        id?: T;
+      };
+  testimonials?:
+    | T
+    | {
+        quote?: T;
+        author?: T;
         id?: T;
       };
   thumbnail?: T;

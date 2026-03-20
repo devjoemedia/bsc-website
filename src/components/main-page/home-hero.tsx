@@ -1,63 +1,63 @@
-'use client';
+'use client'
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import Link from 'next/link';
-import { motion } from "framer-motion";
-import { HomeHero as  IHomeHero, Media } from '@/payload-types'
-import RichTextRenderer from '../common/rich-text-renderer';
+import React, { useState, useEffect, useRef, useCallback } from 'react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import Link from 'next/link'
+import { motion } from 'motion/react'
+import { HomeHero as IHomeHero, Media } from '@/payload-types'
+import RichTextRenderer from '../common/rich-text-renderer'
 
 interface HomeHeroProps {
   items: IHomeHero[]
 }
 
-const HomeHero: React.FC<HomeHeroProps> = ({items}) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
-  const isPausedRef = useRef(false);
+const HomeHero: React.FC<HomeHeroProps> = ({ items }) => {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [isTransitioning, setIsTransitioning] = useState(false)
+  const timerRef = useRef<NodeJS.Timeout | null>(null)
+  const isPausedRef = useRef(false)
 
   const startAutoSlide = useCallback(() => {
-    if (timerRef.current) clearInterval(timerRef.current);
+    if (timerRef.current) clearInterval(timerRef.current)
     timerRef.current = setInterval(() => {
       if (!isPausedRef.current) {
-        setIsTransitioning(true);
+        setIsTransitioning(true)
         setTimeout(() => {
-          setCurrentSlide((prev) => (prev + 1) % items.length);
-          setIsTransitioning(false);
-        }, 300);
+          setCurrentSlide((prev) => (prev + 1) % items.length)
+          setIsTransitioning(false)
+        }, 300)
       }
-    }, 6000);
-  }, []);
+    }, 6000)
+  }, [])
 
   useEffect(() => {
-    startAutoSlide();
+    startAutoSlide()
     return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-  }, [startAutoSlide]);
+      if (timerRef.current) clearInterval(timerRef.current)
+    }
+  }, [startAutoSlide])
 
   const goToSlide = useCallback(
     (index: number) => {
-      setIsTransitioning(true);
+      setIsTransitioning(true)
       setTimeout(() => {
-        setCurrentSlide(index);
-        setIsTransitioning(false);
-      }, 300);
-      startAutoSlide();
+        setCurrentSlide(index)
+        setIsTransitioning(false)
+      }, 300)
+      startAutoSlide()
     },
     [startAutoSlide],
-  );
+  )
 
   const nextSlide = useCallback(() => {
-    goToSlide((currentSlide + 1) % items.length);
-  }, [currentSlide, goToSlide]);
+    goToSlide((currentSlide + 1) % items.length)
+  }, [currentSlide, goToSlide])
 
   const prevSlide = useCallback(() => {
-    goToSlide((currentSlide - 1 + items.length) % items.length);
-  }, [currentSlide, goToSlide]);
+    goToSlide((currentSlide - 1 + items.length) % items.length)
+  }, [currentSlide, goToSlide])
 
-  const slide = items[currentSlide];
+  const slide = items[currentSlide]
 
   return (
     <section className="relative w-full min-h-[90vh] md:min-h-[90vh] overflow-hidden">
@@ -134,11 +134,7 @@ const HomeHero: React.FC<HomeHeroProps> = ({items}) => {
               stroke="currentColor"
               strokeWidth={2}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </Link>
         </motion.div>
@@ -174,7 +170,7 @@ const HomeHero: React.FC<HomeHeroProps> = ({items}) => {
         ))}
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default React.memo(HomeHero);
+export default React.memo(HomeHero)

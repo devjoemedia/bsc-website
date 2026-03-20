@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
+import { motion } from 'motion/react'
 
 export default function Hero() {
   return (
@@ -12,17 +12,17 @@ export default function Hero() {
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
           className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-purple-600/30 blur-3xl"
         />
         <motion.div
           animate={{ scale: [1.2, 1, 1.2], rotate: [0, -90, 0] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
           className="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-gold-500/20 blur-3xl"
         />
         <motion.div
           animate={{ y: [0, -30, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
           className="absolute top-1/4 right-1/4 h-64 w-64 rounded-full bg-purple-500/20 blur-2xl"
         />
         {/* Grid pattern overlay */}
@@ -30,8 +30,8 @@ export default function Hero() {
           className="absolute inset-0 opacity-5"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
+              'linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)',
+            backgroundSize: '60px 60px',
           }}
         />
       </div>
@@ -57,14 +57,14 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight"
         >
-          Showing Her That{" "}
+          Showing Her That{' '}
           <span className="relative">
             <span className="relative z-10 bg-linear-to-r from-gold-400 to-gold-500 bg-clip-text ">
               She Can
             </span>
             <motion.span
               initial={{ width: 0 }}
-              animate={{ width: "100%" }}
+              animate={{ width: '100%' }}
               transition={{ duration: 0.8, delay: 1 }}
               className="absolute bottom-2 left-0 h-3 bg-gold-500/20 rounded-full z-0"
             />
@@ -78,9 +78,8 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.4 }}
           className="mx-auto mt-2 md:mt-6 max-w-2xl text-lg sm:text-xl text-purple-100/90 leading-relaxed"
         >
-          Because She Can is building Africa&apos;s biggest pipeline of Women in
-          Technology. We are committed to empowering women to succeed in their
-          chosen areas of Tech.
+          Because She Can is building Africa&apos;s biggest pipeline of Women in Technology. We are
+          committed to empowering women to succeed in their chosen areas of Tech.
         </motion.p>
 
         {/* CTAs */}
@@ -102,11 +101,7 @@ export default function Hero() {
               stroke="currentColor"
               strokeWidth={2}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
           <a
@@ -125,22 +120,18 @@ export default function Hero() {
           className="mt-20 grid grid-cols-2 sm:grid-cols-4 gap-8 border-t border-white/10 pt-10"
         >
           {[
-            { value: "77+", label: "Mentees" },
-            { value: "67+", label: "Mentors" },
-            { value: "15+", label: "Countries" },
-            { value: "13+", label: "Laptops Donated" },
+            { value: '77+', label: 'Mentees' },
+            { value: '67+', label: 'Mentors' },
+            { value: '15+', label: 'Countries' },
+            { value: '13+', label: 'Laptops Donated' },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-white">
-                {stat.value}
-              </div>
-              <div className="mt-1 text-sm text-purple-200/70">
-                {stat.label}
-              </div>
+              <div className="text-2xl sm:text-3xl font-bold text-white">{stat.value}</div>
+              <div className="mt-1 text-sm text-purple-200/70">{stat.label}</div>
             </div>
           ))}
         </motion.div>
       </div>
     </section>
-  );
+  )
 }

@@ -1,8 +1,8 @@
-'use client';
+'use client'
 
-import React from 'react';
-import Link from 'next/link';
-import { motion } from "framer-motion";
+import React from 'react'
+import Link from 'next/link'
+import { motion } from 'motion/react'
 import { HomeHero as IHomeHero } from '@/payload-types'
 
 interface ProgramDetailsHeroProps {
@@ -10,13 +10,10 @@ interface ProgramDetailsHeroProps {
 }
 
 const ProgramDetailsHero: React.FC<ProgramDetailsHeroProps> = ({ items }) => {
-
   return (
     <section className="relative w-full min-h-[90vh] md:min-h-[60vh] overflow-hidden">
       {/* Background slides */}
-      <div
-        className="absolute inset-0 transition-opacity duration-700 ease-in-out"
-      >
+      <div className="absolute inset-0 transition-opacity duration-700 ease-in-out">
         <img
           src={`/images/bg.png`}
           alt=""
@@ -72,17 +69,13 @@ const ProgramDetailsHero: React.FC<ProgramDetailsHeroProps> = ({ items }) => {
               stroke="currentColor"
               strokeWidth={2}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </Link>
         </motion.div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default React.memo(ProgramDetailsHero);
+export default React.memo(ProgramDetailsHero)

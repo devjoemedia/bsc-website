@@ -1,8 +1,9 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
+import { motion } from 'motion/react'
+import { PartnershipHero } from '@/payload-types'
 
-export default function Hero() {
+export default function Hero({ content }: { content: PartnershipHero }) {
   return (
     <section
       id="home"
@@ -11,20 +12,20 @@ export default function Hero() {
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
           className="absolute -top-40 -right-40 h-96 w-96 rounded-full bg-purple-600/30 blur-3xl"
         />
         <motion.div
           animate={{ scale: [1.2, 1, 1.2], rotate: [0, -90, 0] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
           className="absolute -bottom-40 -left-40 h-[30rem] w-[30rem] rounded-full bg-yellow-500/10 blur-3xl"
         />
         <div
           className="absolute inset-0 opacity-5"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
+              'linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)',
+            backgroundSize: '60px 60px',
           }}
         />
       </div>
@@ -38,7 +39,7 @@ export default function Hero() {
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm font-medium text-white backdrop-blur-sm">
             <span className="inline-block h-2 w-2 rounded-full bg-yellow-400 animate-pulse" />
-            Partnerships
+            {content.badge}
           </span>
         </motion.div>
 
@@ -48,7 +49,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="text-4xl sm:text-5xl md:text-6xl font-recoleta font-bold text-white leading-tight tracking-tight mb-6"
         >
-          Partnering to Foster Growth
+          {content.title}
         </motion.h1>
 
         <motion.p
@@ -57,9 +58,9 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.4 }}
           className="mx-auto max-w-2xl text-lg sm:text-xl text-purple-100/90 leading-relaxed"
         >
-          We have been shaping the lives of African women on the continent. Learn more about how you can support this great cause and empower more women and girls to thrive in tech careers.
+          {content.subtitle}
         </motion.p>
       </div>
     </section>
-  );
+  )
 }

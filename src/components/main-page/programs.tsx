@@ -1,14 +1,14 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
-import ScrollReveal from "./scroll-reveal";
-import { HomeUpcomingProgramsSection, Program as IProgram } from "@/payload-types";
-import HighlightedTitle from "../common/hilight-text";
-import RichTextRenderer from "../common/rich-text-renderer";
-import Link from "next/link";
+import { motion } from 'motion/react'
+import ScrollReveal from './scroll-reveal'
+import { HomeUpcomingProgramsSection, Program as IProgram } from '@/payload-types'
+import HighlightedTitle from '../common/hilight-text'
+import RichTextRenderer from '../common/rich-text-renderer'
+import Link from 'next/link'
 
 interface ProgramsProps {
-  data: HomeUpcomingProgramsSection,
+  data: HomeUpcomingProgramsSection
   programs: IProgram[]
 }
 const Programs: React.FC<ProgramsProps> = ({ programs, data }) => {
@@ -35,7 +35,7 @@ const Programs: React.FC<ProgramsProps> = ({ programs, data }) => {
           {programs.map((program, i) => (
             <ScrollReveal
               key={program.title}
-              direction={i === 0 ? "left" : "right"}
+              direction={i === 0 ? 'left' : 'right'}
               delay={i * 0.15}
             >
               <motion.div
@@ -43,9 +43,7 @@ const Programs: React.FC<ProgramsProps> = ({ programs, data }) => {
                 className="group flex flex-col relative h-full rounded-3xl bg-white border border-gray-100 shadow-xl shadow-gray-200/40 overflow-hidden"
               >
                 {/* Top gradient bar */}
-                <div
-                  className={`h-2 bg-linear-to-r from-primary-light to-primary`}
-                />
+                <div className={`h-2 bg-linear-to-r from-primary-light to-primary`} />
 
                 <div className="p-8 sm:p-10">
                   {/* Badge */}
@@ -55,26 +53,19 @@ const Programs: React.FC<ProgramsProps> = ({ programs, data }) => {
                     {program.badge}
                   </span>
 
-                  <h3 className="text-2xl font-bold text-gray-900">
-                    {program.title}
-                  </h3>
-                  <p
-                    className={`text-sm font-semibold mt-1 text-amber-600 text-bold`}
-                  >
+                  <h3 className="text-2xl font-bold text-gray-900">{program.title}</h3>
+                  <p className={`text-sm font-semibold mt-1 text-amber-600 text-bold`}>
                     {program.cohort}
                   </p>
-
-                  <div className="mt-4 text-gray-600 leading-relaxed">
-                    <RichTextRenderer content={program.description} />
-                  </div>
+                  <p className="mt-4 text-gray-600 leading-relaxed">
+                    {program.description}
+                    {/* <RichTextRenderer content={program.description} /> */}
+                  </p>
 
                   {/* Highlights */}
                   <ul className="mt-6 space-y-3 mb-10">
                     {program.tracks?.map((item) => (
-                      <li
-                        key={item.id}
-                        className="flex items-start gap-3 text-sm text-gray-600"
-                      >
+                      <li key={item.id} className="flex items-start gap-3 text-sm text-gray-600">
                         <svg
                           className={`h-5 w-5 shrink-0 mt-0.5  text-amber-500 `}
                           fill="none"
@@ -95,27 +86,27 @@ const Programs: React.FC<ProgramsProps> = ({ programs, data }) => {
 
                   {/* CTA */}
                   {/* {program.href && ( */}
-                    <Link href={`/programs/${program.id}`} className="mt-auto inline-block">
-                      <span
-                        className={`inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white bg-linear-to-r from-primary-light to-primary shadow-lg transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-0.5`}
+                  <Link href={`/programs/${program.id}`} className="mt-auto inline-block">
+                    <span
+                      className={`inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white bg-linear-to-r from-primary-light to-primary shadow-lg transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-0.5`}
+                    >
+                      Register here
+                      {/* {program.hrefText} */}
+                      <svg
+                        className="h-4 w-4"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
                       >
-                        Register here
-                        {/* {program.hrefText} */}
-                        <svg
-                          className="h-4 w-4"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M17 8l4 4m0 0l-4 4m4-4H3"
-                          />
-                        </svg>
-                      </span>
-                    </Link>
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </span>
+                  </Link>
                   {/* )} */}
                 </div>
               </motion.div>
@@ -124,7 +115,7 @@ const Programs: React.FC<ProgramsProps> = ({ programs, data }) => {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
 export default Programs
