@@ -52,7 +52,7 @@ export default function Navbar() {
               className={`text-lg md:text-xl font-bold transition-colors duration-300 ${
                 scrolled ? 'text-purple-900' : 'text-white'
               }`}
-            >
+            > 
               BSC
             </span>
           </Link>
