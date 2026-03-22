@@ -41,6 +41,11 @@ RUN \
 FROM base AS runner
 WORKDIR /app
 
+ARG PAYLOAD_SECRET
+ARG DATABASE_URL
+ENV PAYLOAD_SECRET=$PAYLOAD_SECRET
+ENV DATABASE_URL=$DATABASE_URL
+
 ENV NODE_ENV production
 # Uncomment the following line in case you want to disable telemetry during runtime.
 # ENV NEXT_TELEMETRY_DISABLED 1
