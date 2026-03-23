@@ -80,7 +80,7 @@ export default function PartnershipOptions({ content }: { content: PartnershipOp
               {content.brochureDescription}
             </p>
             <Link
-              href={(content.brochureFile as Media).url as string}
+              href={(content?.brochureFile as Media).url as string ?? '#'}
               download
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-primary font-bold text-lg hover:scale-105 active:scale-95 transition-all shadow-xl hover:shadow-2xl"
             >

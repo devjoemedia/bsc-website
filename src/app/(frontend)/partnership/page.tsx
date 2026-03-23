@@ -35,8 +35,12 @@ export default async function PartnershipPage() {
     <div className="">
       <Navbar />
       <main>
-        <Hero content={partnership_hero_response.docs[0]} />
-        {/* <PartnershipOptions content={partnership_options_response.docs[0]} /> */}
+        {partnership_hero_response.docs[0] && (
+          <Hero content={partnership_hero_response.docs[0]} />
+        )}
+        {partnership_options_response.docs[0] && (
+          <PartnershipOptions content={partnership_options_response.docs[0]} />
+        )}
       </main>
       <Footer />
     </div>
