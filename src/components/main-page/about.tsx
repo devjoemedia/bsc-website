@@ -62,7 +62,7 @@ const About: React.FC<AboutProps> = ({ data }) => {
             <p className="text-lg text-gray-600 leading-relaxed">
               <RichTextRenderer content={data.description} />
             </p>
-            {data.href && (
+            {data?.href && (
               <div className="mt-8">
                 <a
                   href={data.href}

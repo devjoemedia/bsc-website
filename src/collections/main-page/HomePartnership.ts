@@ -63,6 +63,5 @@ export const HomePartnership: CollectionConfig = {
       required: true,
       hasMany: true
     },
-    
   ],
 }

@@ -58,10 +58,10 @@ const Partnerships: React.FC<SpotlightProps> = ({ data }) => {
               </p>
               <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
-                  href={data.href}
+                  href={data?.href}
                   className="group inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-base font-semibold text-primary shadow-xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
                 >
-                  {data.hrefText}
+                  {data?.hrefText}
                   <svg
                     className="h-4 w-4 transition-transform group-hover:translate-x-1"
                     fill="none"
@@ -77,10 +77,10 @@ const Partnerships: React.FC<SpotlightProps> = ({ data }) => {
                   </svg>
                 </Link>
                 <Link
-                  href={data.hrefTwo}
+                  href={data?.hrefTwo}
                   className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-8 py-4 text-base font-semibold text-white transition-all duration-300 hover:bg-white/10"
                 >
-                  {data.hrefTwoText}
+                  {data?.hrefTwoText}
                 </Link>
               </div>
             </div>

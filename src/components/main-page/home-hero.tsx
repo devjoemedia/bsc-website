@@ -113,7 +113,7 @@ const HomeHero: React.FC<HomeHeroProps> = ({ items }) => {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="text-4xl font-recoleta sm:text-5xl md:text-6xl font-bold text-white leading-tight tracking-tight"
         >
-          {slide.title}
+          {slide?.title}
         </motion.h1>
 
         <motion.p
@@ -122,9 +122,10 @@ const HomeHero: React.FC<HomeHeroProps> = ({ items }) => {
           transition={{ duration: 0.7, delay: 0.4 }}
           className="mx-auto mt-0 md:mt-5 max-w-2xl text-lg sm:text-xl text-purple-100/90 leading-relaxed"
         >
-          <RichTextRenderer content={slide.subtitle} />
+          <RichTextRenderer content={slide?.subtitle} />
         </motion.p>
 
+        {slide?.href && (
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -132,7 +133,7 @@ const HomeHero: React.FC<HomeHeroProps> = ({ items }) => {
           className="mt-5 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <Link
-            href={slide.href}
+            href={slide?.href}
             className="group h-full w-full inline-flex items-center gap-2 rounded-full bg-linear-to-r from-primary to-primary px-8 py-4 text-base font-semibold text-white shadow-xl shadow-purple-900/20 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-900/30 hover:-translate-y-1"
           >
             {slide.hrefText}
@@ -147,6 +148,7 @@ const HomeHero: React.FC<HomeHeroProps> = ({ items }) => {
             </svg>
           </Link>
         </motion.div>
+        )}
       </div>
 
       {/* Navigation arrows - desktop only */}

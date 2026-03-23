@@ -148,7 +148,7 @@ export default function Navbar() {
                 Join Community
               </Link>
               <Link
-                href="/danate"
+                href="/donate"
                 onClick={() => setIsOpen(false)}
                 className="mt-4 block rounded-full bg-linear-to-r from-primary to-primary px-6 py-3 text-center text-sm font-semibold text-white"
               >

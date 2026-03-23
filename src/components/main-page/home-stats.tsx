@@ -19,8 +19,8 @@ const HomeStats: React.FC<StatProps> = ({ stats }) => {
       >
         {stats.map((stat) => (
           <div key={stat.id} className="text-center">
-            <div className="text-2xl sm:text-3xl font-bold text-primary">{stat.title}</div>
-            <div className="mt-1 text-sm text-primary">{stat.subtitle}</div>
+            <div className="text-2xl sm:text-3xl font-bold text-primary">{stat?.title}</div>
+            <div className="mt-1 text-sm text-primary">{stat?.subtitle}</div>
           </div>
         ))}
       </motion.div>
