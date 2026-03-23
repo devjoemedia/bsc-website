@@ -96,12 +96,6 @@ export default async function HomePage() {
     showHiddenFields: true,
   })
 
-  console.log({
-    hero_response,
-    stats_response,
-    about_response,
-    pillars_response,
-  })
   return (
     <div className="">
       <Navbar />

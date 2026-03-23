@@ -23,6 +23,6 @@ export const PartnershipOptions: CollectionConfig = {
     },
     { name: 'brochureTitle', type: 'text', required: true },
     { name: 'brochureDescription', type: 'text', required: true },
-    { name: 'brochureFile', type: 'upload', relationTo: 'media', required: true },
+    { name: 'brochureFile', type: 'upload', relationTo: 'media', required: true, hasMany: false },
   ],
 }

@@ -1,6 +1,6 @@
 import { getPayload } from 'payload'
-
 import config from '@/payload.config'
+
 import Navbar from '@/components/common/navbar'
 import Hero from '@/components/about-page/hero'
 import VisionMission from '@/components/about-page/vision-mission'
