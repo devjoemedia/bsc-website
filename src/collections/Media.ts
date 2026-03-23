@@ -7,7 +7,6 @@ export const Media: CollectionConfig = {
   },
   upload: {
     disableLocalStorage: true,
-    staticDir: 'media'
   },
   fields: [
     {

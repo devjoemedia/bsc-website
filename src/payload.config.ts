@@ -32,6 +32,7 @@ import { DonatePage } from './collections/donate-page/DonatePage'
 import { ProgramDetailsData } from './collections/programs-page/ProgramDetailsData'
 import { AboutHero } from './collections/about-page/AboutHero'
 import { AboutVisionAndMission } from './collections/about-page/AboutVisionAndMission'
+import { AboutFAQs } from './collections/about-page/AboutFAQs'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -53,23 +54,24 @@ export default buildConfig({
     HomePillars,
     HomeStats,
     HomeUpcomingProgramsSections,
-    Programs,
-    Stats,
-    CommunityMember,
     AboutStatistics,
     AboutOurStory,
     AboutFounders,
+    AboutHero,
+    AboutVisionAndMission,
+    AboutFAQs,
+    CommunityMember,
+    DonatePage,
+    Programs,
     ProgramsHero,
     ProgramsSection,
+    ProgramDetailsData,
     GetInvolvedHero,
     GetInvolvedOpportunities,
     PartnershipHero,
     PartnershipOptions,
-    VolunteerPage,
-    DonatePage,
-    ProgramDetailsData,
-    AboutHero,
-    AboutVisionAndMission,
+    Stats,
+    VolunteerPage
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
@@ -83,6 +85,7 @@ export default buildConfig({
   plugins: [
     vercelBlobStorage({
       enabled: true,
+      clientUploads: true,
       collections: {
         media: true,
       },
